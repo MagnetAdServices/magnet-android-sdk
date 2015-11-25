@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/shadow"></item>
+    <item
+        android:id="@+id/shape_background"
+        android:bottom="2dp"
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp">
+        <shape android:shape="oval">
+            <solid android:color="@color/accent_material_light" />
+        </shape>
+    </item>
+
+</layer-list>
