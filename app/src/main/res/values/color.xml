@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="material_teal">@color/material_deep_teal_500</color>
-    <color name="ripple_material_teal">#ff149691</color>
+    <color name="material_teal">#ff353f93</color>
+    <color name="ripple_material_teal">#ff353f93</color>
 
-    <color name="colorPrimary">@color/material_deep_teal_500</color>
-    <color name="colorPrimaryDark">@color/material_deep_teal_500</color>
+    <color name="colorPrimary">#ff353f93</color>
+    <color name="colorPrimaryDark">#ff353f93</color>
 
+    <color name="colorPink">#ffdc3766</color>
+    <color name="colorPurple">#ff353f93</color>
     <color name="windowBackgroundColor">#333333</color>
     <color name="black_translucent">#80000000</color>
 

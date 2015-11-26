@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import ir.magnet.sample.ui.FloatingActionButton;
 
@@ -78,7 +77,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
         }
         if(null != fab){
             fab.setDrawableIcon(getResources().getDrawable(R.drawable.plus));
-            fab.setBackgroundColor(getResources().getColor(R.color.material_deep_teal_500));
+            fab.setBackgroundColor(getResources().getColor(R.color.colorPink));
             fab.setOnClickListener(this);
         }
         super.onActivityCreated(savedInstanceState);

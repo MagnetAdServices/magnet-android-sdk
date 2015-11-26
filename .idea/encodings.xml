@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/app/libs/magnet-android-sdk-3.3.3.jar" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/libs/magnet-android-sdk-3.3.3.jar" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/libs/magnet-android-sdk-3.3.3.jar" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/src/java" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res" charset="windows-1256" />
-    <file url="file://$PROJECT_DIR$/app/src/res" charset="windows-1256" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
