@@ -69,7 +69,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
          * Target restriction restricts advertisement target to stay in your app or it could open an external application ie(Browser, Bazar, Myket and ect). default value is Both.
          */
         MagnetSDK.initialize(getActivity());
-        MagnetSDK.getSettings().setTestMode(false);
+        MagnetSDK.getSettings().setTestMode(true);
 //        MagnetSDK.getSettings().setTargetRestriction(TargetRestriction.Both);
 
         if(null != videoBtn){
@@ -94,12 +94,12 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 
             case R.id.MobileBannerPageFab:
                 MagnetMobileBannerAd bannerAd = MagnetMobileBannerAd.create(getActivity());
-                bannerAd.load("141cec5b4eec418d9c3ee4030a8f3ea1", adLayout);
+                bannerAd.load("Your Ad unit id", adLayout);
                 break;
 
             case R.id.MrectPageFab:
                 MagnetMRectAd MRectAd = MagnetMRectAd.create(getActivity());
-                MRectAd.load("141cec5b4eec418d9c3ee4030a8f3ea1", adLayout, MagnetMRectSize.SIZE_300_250);
+                MRectAd.load("Your Ad unit id", adLayout, MagnetMRectSize.SIZE_300_250);
                 break;
 
             case R.id.videoBtn:
@@ -143,7 +143,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                         }
                     });
                 } else {
-                    rewardAd.load("141cec5b4eec418d9c3ee4030a8f3ea1");
+                    rewardAd.load("Your Ad unit id");
                 }
 
         }
