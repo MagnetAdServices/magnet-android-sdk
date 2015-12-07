@@ -94,12 +94,12 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 
             case R.id.MobileBannerPageFab:
                 MagnetMobileBannerAd bannerAd = MagnetMobileBannerAd.create(getActivity());
-                bannerAd.load("Your Ad unit id", adLayout);
+                bannerAd.load("Your Ad unit id", adLayout); // Enter your ad unit id
                 break;
 
             case R.id.MrectPageFab:
                 MagnetMRectAd MRectAd = MagnetMRectAd.create(getActivity());
-                MRectAd.load("Your Ad unit id", adLayout, MagnetMRectSize.SIZE_300_250);
+                MRectAd.load("Your Ad unit id", adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
                 break;
 
             case R.id.videoBtn:
@@ -143,7 +143,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                         }
                     });
                 } else {
-                    rewardAd.load("Your Ad unit id");
+                    rewardAd.load("Your Ad unit id"); // Enter your ad unit id
                 }
 
         }
