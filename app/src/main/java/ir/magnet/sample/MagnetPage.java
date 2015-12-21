@@ -1,12 +1,15 @@
 package ir.magnet.sample;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import ir.magnet.sample.ui.FloatingActionButton;
 
@@ -27,6 +30,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
     private FrameLayout adLayout;
     private android.widget.Button videoBtn;
     private String SHOW_VIDEO_TEXT = "SHOW VIDEO";
+    private Activity activityContext;
 
     public static MagnetPage newInstance(int position) {
         MagnetPage magnetPage = new MagnetPage();
@@ -62,13 +66,14 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
+        activityContext = getActivity();
         /**
          * Magnet sdk should be initialized at the very beginning of your app.
          * Initialization steps need to be set once in your application's life cycle; but there wouldn't be a problem if they have been called more than once.
          * If you want to release your application please change test mode to false or comment the line.
          * Target restriction restricts advertisement target to stay in your app or it could open an external application ie(Browser, Bazar, Myket and ect). default value is Both.
          */
-        MagnetSDK.initialize(getActivity());
+        MagnetSDK.initialize(activityContext.getApplicationContext());
         MagnetSDK.getSettings().setTestMode(true);
 //        MagnetSDK.getSettings().setTargetRestriction(TargetRestriction.Both);
 
@@ -93,13 +98,13 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
         switch (ViewId) {
 
             case R.id.MobileBannerPageFab:
-                MagnetMobileBannerAd bannerAd = MagnetMobileBannerAd.create(getActivity());
-                bannerAd.load("Your Ad unit id", adLayout); // Enter your ad unit id
+                MagnetMobileBannerAd bannerAd = MagnetMobileBannerAd.create(activityContext);
+                bannerAd.load("Your ad unit id", adLayout); // Enter your ad unit id
                 break;
 
             case R.id.MrectPageFab:
-                MagnetMRectAd MRectAd = MagnetMRectAd.create(getActivity());
-                MRectAd.load("Your Ad unit id", adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
+                MagnetMRectAd MRectAd = MagnetMRectAd.create(activityContext);
+                MRectAd.load("Your ad unit id", adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
                 break;
 
             case R.id.videoBtn:
@@ -107,7 +112,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                  * This an implementation for a rewarded ad. first click loads the ad, second plays it.
                  */
 
-                MagnetRewardAd rewardAd = MagnetRewardAd.create(getActivity());
+                MagnetRewardAd rewardAd = MagnetRewardAd.create(activityContext);
                 rewardAd.setAdLoadListener(new MagnetAdLoadListener() {
                     @Override
                     public void onReceive() {
@@ -131,7 +136,11 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                              *  You can make sure the reward is come from the magnet server, within an API entering trackingId and verificationCode.
                              *  The API address is: http://magnet.ir/api/verify/conversion?TrackingId={trackingId}&VerificationToken={verificationToken}
                              */
-
+                            Log.i("Magnet", "Reward Successful");
+                            Log.i("Magnet", verificationToken);
+                            Log.i("Magnet", trackingId);
+                            /*Toast.makeText(activityContext, "Verification Token : " + verificationToken
+                                    + "\n Tracking Id:" + trackingId, Toast.LENGTH_LONG).show();*/
                         }
 
                         @Override
@@ -140,10 +149,12 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                              * User did not see the ad completely and can not get reward.
                              * There is no need to implement an specific logic here.
                              */
+                            Log.i("Magnet", "Reward Failed");
+                            /*Toast.makeText(activityContext, "Reward Failed", Toast.LENGTH_LONG).show();*/
                         }
                     });
                 } else {
-                    rewardAd.load("Your Ad unit id"); // Enter your ad unit id
+                    rewardAd.load("Your ad unit id"); // Enter your ad unit id
                 }
 
         }
