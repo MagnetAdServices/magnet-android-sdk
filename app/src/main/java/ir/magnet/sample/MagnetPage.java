@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import ir.magnet.sample.ui.FloatingActionButton;
 
@@ -75,6 +74,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
          */
         MagnetSDK.initialize(activityContext.getApplicationContext());
         MagnetSDK.getSettings().setTestMode(true);
+//        MagnetSDK.getSettings().setSound(false);
 //        MagnetSDK.getSettings().setTargetRestriction(TargetRestriction.Both);
 
         if(null != videoBtn){
@@ -99,12 +99,12 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 
             case R.id.MobileBannerPageFab:
                 MagnetMobileBannerAd bannerAd = MagnetMobileBannerAd.create(activityContext);
-                bannerAd.load("Your ad unit id", adLayout); // Enter your ad unit id
+                bannerAd.load("Your Ad unit id", adLayout); // Enter your ad unit id
                 break;
 
             case R.id.MrectPageFab:
                 MagnetMRectAd MRectAd = MagnetMRectAd.create(activityContext);
-                MRectAd.load("Your ad unit id", adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
+                MRectAd.load("Your Ad unit id", adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
                 break;
 
             case R.id.videoBtn:
@@ -136,11 +136,12 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                              *  You can make sure the reward is come from the magnet server, within an API entering trackingId and verificationCode.
                              *  The API address is: http://magnet.ir/api/verify/conversion?TrackingId={trackingId}&VerificationToken={verificationToken}
                              */
+
                             Log.i("Magnet", "Reward Successful");
                             Log.i("Magnet", verificationToken);
                             Log.i("Magnet", trackingId);
-                            /*Toast.makeText(activityContext, "Verification Token : " + verificationToken
-                                    + "\n Tracking Id:" + trackingId, Toast.LENGTH_LONG).show();*/
+//                            Toast.makeText(activityContext, "Verification Token : " + verificationToken
+//                                    + "\n Tracking Id:" + trackingId, Toast.LENGTH_LONG).show();
                         }
 
                         @Override
@@ -150,11 +151,12 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                              * There is no need to implement an specific logic here.
                              */
                             Log.i("Magnet", "Reward Failed");
-                            /*Toast.makeText(activityContext, "Reward Failed", Toast.LENGTH_LONG).show();*/
+//                            Toast.makeText(activityContext, "Reward Failed", Toast.LENGTH_LONG).show();
                         }
                     });
+                    rewardAd.show();
                 } else {
-                    rewardAd.load("Your ad unit id"); // Enter your ad unit id
+                    rewardAd.load("Your Ad unit id"); // Enter your ad unit id
                 }
 
         }
