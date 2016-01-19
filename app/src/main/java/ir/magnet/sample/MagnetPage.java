@@ -30,6 +30,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
     private android.widget.Button videoBtn;
     private String SHOW_VIDEO_TEXT = "SHOW VIDEO";
     private Activity activityContext;
+    private String adUnitId = "Your Ad Unit Id";
 
     public static MagnetPage newInstance(int position) {
         MagnetPage magnetPage = new MagnetPage();
@@ -73,9 +74,9 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
          * Target restriction restricts advertisement target to stay in your app or it could open an external application ie(Browser, Bazar, Myket and ect). default value is Both.
          */
         MagnetSDK.initialize(activityContext.getApplicationContext());
-        MagnetSDK.getSettings().setTestMode(true);
-//        MagnetSDK.getSettings().setSound(false);
+        MagnetSDK.getSettings().setTestMode(false);
 //        MagnetSDK.getSettings().setTargetRestriction(TargetRestriction.Both);
+//        MagnetSDK.getSettings().setSound(false); // enable/disable sound for video ads
 
         if(null != videoBtn){
             videoBtn.setOnClickListener(this);
@@ -99,12 +100,12 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 
             case R.id.MobileBannerPageFab:
                 MagnetMobileBannerAd bannerAd = MagnetMobileBannerAd.create(activityContext);
-                bannerAd.load("Your Ad unit id", adLayout); // Enter your ad unit id
+                bannerAd.load(adUnitId, adLayout); // Enter your ad unit id
                 break;
 
             case R.id.MrectPageFab:
                 MagnetMRectAd MRectAd = MagnetMRectAd.create(activityContext);
-                MRectAd.load("Your Ad unit id", adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
+                MRectAd.load(adUnitId, adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
                 break;
 
             case R.id.videoBtn:
@@ -154,9 +155,8 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 //                            Toast.makeText(activityContext, "Reward Failed", Toast.LENGTH_LONG).show();
                         }
                     });
-                    rewardAd.show();
                 } else {
-                    rewardAd.load("Your Ad unit id"); // Enter your ad unit id
+                    rewardAd.load(adUnitId); // Enter your ad unit id
                 }
 
         }
