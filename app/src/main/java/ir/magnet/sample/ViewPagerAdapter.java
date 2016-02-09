@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
+    final int PAGE_COUNT = 4;
     private String titles[] ;
 
     public ViewPagerAdapter(FragmentManager fm, String[] titles) {
@@ -17,12 +17,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            // Open FragmentTab1.java
             case 0:
                 return MagnetPage.newInstance(position);
             case 1:
                 return MagnetPage.newInstance(position);
             case 2:
+                return MagnetPage.newInstance(position);
+            case 3:
                 return MagnetPage.newInstance(position);
         }
         return null;

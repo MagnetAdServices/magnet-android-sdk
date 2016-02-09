@@ -6,5 +6,6 @@ package ir.magnet.sample;
 public enum FragmentType {
     MobileBanner,
     Mrect,
-    Interstitial;
+    Interstitial,
+    RewardedVideo;
 }

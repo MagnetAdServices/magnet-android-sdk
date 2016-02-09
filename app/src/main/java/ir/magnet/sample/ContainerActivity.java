@@ -11,7 +11,7 @@ import ir.magnet.sample.ui.SlidingTabLayout;
 public class ContainerActivity extends ActionBarActivity {
 
     ViewPager pager;
-    private String titles[] = new String[]{"Mobile Banner", "MRect", "Interstitial"};
+    private String titles[] = new String[]{"Mobile Banner", "MRect", "Interstitial", "Rewarded Video"};
     private Toolbar toolbar;
 
     SlidingTabLayout slidingTabLayout;
