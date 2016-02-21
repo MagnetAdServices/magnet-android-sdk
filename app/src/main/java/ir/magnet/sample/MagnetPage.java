@@ -133,7 +133,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 
                     @Override
                     public void onFail(int errorCode, String errorMessage) {
-                        Log.i("Magnet", "Load Interstitial failed, try again.");
+                        Log.i("Magnet", "Loading Interstitial failed, try again.");
                     }
                 });
                 myInterstitial.load(adUnitId);// Enter your ad unit id
@@ -144,17 +144,19 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                 /**
                  * This is an implementation of a rewarded ad. First click loads the ad, second plays it.
                  */
-
                 final MagnetRewardAd rewardAd = MagnetRewardAd.create(activityContext);
                 /**
-                 * When you enable manual loading, at first you can get the price of video
+                 * When you enable manual loading, you can get the price of video at first
                  * and then you can continue loading ad with retrieveData() method.
                  */
                 rewardAd.enableManualLoading();
                 rewardAd.setAdLoadListener(new MagnetAdLoadListener() {
                     @Override
                     public void onPreload(int price, String currency) {
-                        Log.i("Magnet", String.valueOf(price) + " " + currency);
+                        Log.i("Magnet Log", "price: " + price + "\ncurrency: " + currency);
+                        /**
+                         * Call retrieveData in onPreload if you have enabled manual Loading.
+                         */
                         rewardAd.retrieveData();
                     }
 
@@ -166,41 +168,34 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                     @Override
                     public void onFail(int errorCode, String errorMessage) {
                         /**
-                         * Couldn't receive ad, perform fail over logic.
+                         * User did not see the ad completely and can not get reward.
                          */
                     }
                 });
-
-                if(loadVideoBtn.getText().toString().equals(SHOW_VIDEO_TEXT)) {
+                if(SHOW_VIDEO_TEXT.equals(loadVideoBtn.getText().toString())) {
                     rewardAd.show(new MagnetRewardListener() {
                         @Override
                         public void onRewardSuccessful(String verificationToken, String trackingId) {
                             /**
                              *  Give reward to your user.
-                             *  You can make sure the reward is come from the magnet server, within an API entering trackingId and verificationCode.
+                             *  You can make sure the reward came from magnet server, within an API entering trackingId and verificationCode.
                              *  The API address is: http://magnet.ir/api/verify/conversion?TrackingId={trackingId}&VerificationToken={verificationToken}
                              */
-
-                            Log.i("Magnet", "Reward Successful");
-                            Log.i("Magnet", verificationToken);
-                            Log.i("Magnet", trackingId);
-//                            Toast.makeText(activityContext, "Verification Token : " + verificationToken
-//                                    + "\n Tracking Id:" + trackingId, Toast.LENGTH_LONG).show();
+                            Log.i("Magnet Log", "reward successful");
+                            Log.i("Magnet Log", verificationToken);
+                            Log.i("Magnet Log", trackingId);
                         }
 
                         @Override
                         public void onRewardFail() {
                             /**
                              * User did not see the ad completely and can not get reward.
-                             * There is no need to implement an specific logic here.
                              */
-
-                            Log.i("Magnet", "Reward Failed");
-//                            Toast.makeText(activityContext, "Reward Failed", Toast.LENGTH_LONG).show();
+                            Log.i("Magnet Log", "reward successful");
                         }
                     });
                 } else {
-                    rewardAd.load(adUnitId); // Enter your ad unit id
+                    rewardAd.load(adUnitId);
                 }
 
         }
