@@ -5,23 +5,18 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:background="@color/material_blue_grey_800"
-        android:layout_height="fill_parent">
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:id="@+id/mrectrAdFrame"/>
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mrectrAdFrame"
-            android:id="@+id/mrectrAdFrame2"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
 
-        <ir.magnet.sample.ui.FloatingActionButton
-            android:id="@+id/MrectPageFab"
+<!--        <ir.magnet.sample.ui.FloatingActionButton
+            android:id="@+id/NativePageFab"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_gravity="bottom|right"
@@ -31,7 +26,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="20dp"
-            android:layout_marginBottom="25dp" />
+            android:layout_marginBottom="25dp" />-->
 
     </RelativeLayout>
 

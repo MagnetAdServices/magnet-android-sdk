@@ -6,12 +6,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 
+import ir.magnet.sample.adapters.ViewPagerAdapter;
 import ir.magnet.sample.ui.SlidingTabLayout;
 
 public class ContainerActivity extends ActionBarActivity {
 
     ViewPager pager;
-    private String titles[] = new String[]{"Mobile Banner", "MRect", "Interstitial", "Rewarded Video"};
+    private String titles[] = new String[]{"Native", "Mobile Banner", "MRect", "Interstitial", "Rewarded Video"};
     private Toolbar toolbar;
 
     SlidingTabLayout slidingTabLayout;
