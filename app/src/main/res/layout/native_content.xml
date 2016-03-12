@@ -3,48 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<android.support.v7.widget.CardView
+    <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/native_outer_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        card_view:cardCornerRadius="5dp"
         android:layout_marginTop="2dp"
         card_view:cardUseCompatPadding="true"
-        card_view:cardElevation="3dp">-->
+        card_view:cardPreventCornerOverlap="false"
+        card_view:cardElevation="4dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:background="#eaeaea">
+            android:background="#eaeaea"
+            android:id="@+id/test">
 
-            <LinearLayout
-                android:id="@+id/advertiser_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+            <ImageView
+                android:id="@+id/ad_indicative"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentTop="true"
-                android:layout_margin="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="حمایت شده"
-                    android:textColor="@android:color/darker_gray"
-                    android:layout_marginRight="5dp"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/advertiser" />
-
-            </LinearLayout>
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ad_indicative" />
 
             <ImageView
                 android:id="@+id/native_icon_image"
@@ -99,10 +82,12 @@
                 android:layout_below="@+id/native_main_image"
                 android:layout_marginTop="10dp"
                 android:background="#FF4500"
-                android:clickable="true"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_alignParentBottom="true"
                 android:text="اطلاعات بیشتر"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <!--<ImageView
@@ -116,6 +101,6 @@
                 android:contentDescription="@string/native_privacy_information_icon_image"/>-->
 
         </RelativeLayout>
-    <!--</android.support.v7.widget.CardView>-->
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

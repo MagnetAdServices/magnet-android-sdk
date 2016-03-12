@@ -1,7 +1,6 @@
 package ir.magnet.sample;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import ir.magnet.sample.adapters.NativeAdListAdapter;
 import ir.magnet.sample.ui.FloatingActionButton;
@@ -23,12 +24,10 @@ import ir.magnet.sdk.MagnetInterstitialAd;
 import ir.magnet.sdk.MagnetMRectAd;
 import ir.magnet.sdk.MagnetMRectSize;
 import ir.magnet.sdk.MagnetMobileBannerAd;
-import ir.magnet.sdk.MagnetNativeContentAd;
 import ir.magnet.sdk.MagnetRewardAd;
 import ir.magnet.sdk.MagnetRewardListener;
 import ir.magnet.sdk.MagnetSDK;
 import ir.magnet.sdk.TargetRestriction;
-import ir.magnet.sdk.ViewBinder;
 
 public class MagnetPage extends Fragment implements View.OnClickListener{
 
@@ -37,11 +36,11 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
     RecyclerView mRecyclerView;
     private int position;
     private View rootView = null;
-    private FrameLayout adLayout, adLayout2;
+    private FrameLayout adLayout;
     private android.widget.Button loadVideoBtn, loadAdButton;
     private String SHOW_VIDEO_TEXT = "SHOW VIDEO";
     private Activity activityContext;
-    private String adUnitId = "141cec5b4eec418d9c3ee4030a8f3ea1";
+    private String adUnitId = "AdUnitId";
 
 
     public static MagnetPage newInstance(int position) {
@@ -68,7 +67,6 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
             case 2:
                 rootView = inflater.inflate(R.layout.mrect, container, false);
                 adLayout = (FrameLayout) rootView.findViewById(R.id.mrectrAdFrame);
-                adLayout2 = (FrameLayout) rootView.findViewById(R.id.mrectrAdFrame2);
                 fab = (FloatingActionButton) rootView.findViewById(R.id.MrectPageFab);
                 break;
             case 3:
@@ -95,7 +93,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
          * Default status of sound for video ads can be enabled or muted.
          */
         MagnetSDK.initialize(activityContext.getApplicationContext());
-        MagnetSDK.getSettings().setTestMode(false);
+        MagnetSDK.getSettings().setTestMode(true);
         MagnetSDK.getSettings().setTargetRestriction(TargetRestriction.Both);
         MagnetSDK.getSettings().setSound(true); // enable/disable sound for video ads
 
@@ -114,24 +112,10 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
         if(position == 0) { // native case
             RecyclerView.Adapter mAdapter;
             RecyclerView.LayoutManager mLayoutManager;
-
-            // use this setting to improve performance if you know that changes
-            // in content do not change the layout size of the RecyclerView
             mRecyclerView.setHasFixedSize(true);
-
-            // use a linear layout manager
             mLayoutManager = new LinearLayoutManager(activityContext);
             mRecyclerView.setLayoutManager(mLayoutManager);
-
-            ArrayList<String> titles = new ArrayList<>(100);
-            for(int i = 0; i < 100; i++) {
-                titles.add("ردیف " + (i + 1));
-            }
-            ArrayList<String> description = new ArrayList<>(100);
-            for(int i = 0; i < 100; i++) {
-                description.add("زندگی بسیار مسحور کننده است فقط باید با عینک مناسبی به آن نگریست.");
-            }
-            mAdapter = new NativeAdListAdapter(titles, description, activityContext);
+            mAdapter = new NativeAdListAdapter(activityContext);
             mRecyclerView.setAdapter(mAdapter);
         }
 
@@ -155,9 +139,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 
             case R.id.MrectPageFab:
                 MagnetMRectAd MRectAd = MagnetMRectAd.create(activityContext);
-                MRectAd.load(adUnitId, adLayout, MagnetMRectSize.SIZE_320_50); // Enter your ad unit id
-                MagnetMRectAd MRectAd2 = MagnetMRectAd.create(activityContext);
-                MRectAd2.load(adUnitId, adLayout2, MagnetMRectSize.SIZE_320_50); // Enter your ad unit id
+                MRectAd.load(adUnitId, adLayout, MagnetMRectSize.SIZE_300_250); // Enter your ad unit id
                 break;
 
 

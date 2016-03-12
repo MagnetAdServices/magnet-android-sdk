@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Magnet Sample</string>
+    <string name="sample_description">زندگی بسیار محصور کننده است، فقط باید با عینک مناسبی به آن نگریست.</string>
+    <string-array
+        name="sample_titles">
+        <item>تهران</item>
+        <item>اصفهان</item>
+        <item>سنندج</item>
+        <item>تبریز</item>
+    </string-array>
 </resources>

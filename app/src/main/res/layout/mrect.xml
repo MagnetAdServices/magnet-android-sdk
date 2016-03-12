@@ -14,11 +14,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:id="@+id/mrectrAdFrame"/>
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mrectrAdFrame"
-            android:id="@+id/mrectrAdFrame2"/>
 
         <ir.magnet.sample.ui.FloatingActionButton
             android:id="@+id/MrectPageFab"

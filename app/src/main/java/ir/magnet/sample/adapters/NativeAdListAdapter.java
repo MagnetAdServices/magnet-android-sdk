@@ -1,8 +1,8 @@
 package ir.magnet.sample.adapters;
 
 import android.app.Activity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,24 +12,24 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import com.bumptech.glide.Glide;
+
+import java.util.Arrays;
+import java.util.List;
 
 import ir.magnet.sample.R;
+import ir.magnet.sdk.BadImplementationException;
 import ir.magnet.sdk.MagnetNativeContentAd;
-import ir.magnet.sdk.ViewBinder;
+import ir.magnet.sdk.MagnetNativeViewBinder;
 
 /**
  * Created by Hesami on 01/03/2016.
  */
 public class NativeAdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private ArrayList<String> mTitles;
-    private ArrayList<String> mDescriptions;
     private Activity mContext;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public NativeAdListAdapter(ArrayList<String> titles, ArrayList<String> descriptions, Activity context) {
-        mDescriptions = descriptions;
-        mTitles = titles;
+    public NativeAdListAdapter(Activity context) {
         mContext = context;
     }
 
@@ -37,7 +37,6 @@ public class NativeAdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public class AdFrameViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public FrameLayout adLayout;
         public AdFrameViewHolder(View v) {
             super(v);
@@ -46,12 +45,12 @@ public class NativeAdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public class ListItemViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView headlineTextView;
         public TextView descriptionTextView;
         public ImageView advertiserIcon;
         public ImageView advertiseImage;
         public Button callToActionButton;
+        public ImageView ad_indicative;
 
         public ListItemViewHolder(View v) {
             super(v);
@@ -60,6 +59,7 @@ public class NativeAdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             advertiserIcon = (ImageView) v.findViewById(R.id.native_icon_image);
             advertiseImage = (ImageView) v.findViewById(R.id.native_main_image);
             callToActionButton = (Button) v.findViewById(R.id.native_cta);
+            ad_indicative = (ImageView) v.findViewById(R.id.ad_indicative);
         }
     }
 
@@ -95,25 +95,63 @@ public class NativeAdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
         if(holder instanceof AdFrameViewHolder) {
-            ViewBinder viewBinder = new ViewBinder.Builder()
-                    .titleId(R.id.native_title)
-                    .descriptionId(R.id.native_text)
-                    .iconImageId(R.id.native_icon_image)
-                    .imageId(R.id.native_main_image)
-                    .callToActionId(R.id.native_cta)
-                    .build();
+            /**
+             * Your native ad will be shown here ...
+             * Create a MagnetNativeViewBinder object specifying the binding between your layout XML and the ad’s content.
+             */
+
+            MagnetNativeViewBinder viewBinder = null;
+            try {
+                viewBinder = new MagnetNativeViewBinder.Builder()
+                        .titleId(R.id.native_title)
+                        .descriptionId(R.id.native_text)
+                        .iconImageId(R.id.native_icon_image)
+                        .imageId(R.id.native_main_image)
+                        .callToActionId(R.id.native_cta)
+                        .adIndicativeId(R.id.ad_indicative)
+                        .build();
+            } catch (BadImplementationException e) {
+                Log.e("Magnet error", e.toString());
+            }
             RelativeLayout adView = (RelativeLayout) mContext.getLayoutInflater().inflate(R.layout.native_content, null);
             MagnetNativeContentAd magnetNativeContentad = MagnetNativeContentAd.create(mContext);
             magnetNativeContentad.buildNativeAdView(adView, viewBinder);
-            magnetNativeContentad.load("141cec5b4eec418d9c3ee4030a8f3ea1", ((AdFrameViewHolder) holder).adLayout);
+            magnetNativeContentad.load("AdUnitId", ((AdFrameViewHolder) holder).adLayout);
 
         } else {
-            final String title = mTitles.get(position);
-            final String description = mDescriptions.get(position);
-            ((ListItemViewHolder) holder).advertiserIcon.setImageResource(R.drawable.ic_launcher);
-            ((ListItemViewHolder) holder).headlineTextView.setText(title);
+            final List<String> titles = Arrays.asList(mContext.getResources().getStringArray(R.array.sample_titles));
+            final String description = mContext.getResources().getString(R.string.sample_description);
             ((ListItemViewHolder) holder).descriptionTextView.setText(description);
-            ((ListItemViewHolder) holder).advertiseImage.setVisibility(View.GONE);
+            ((ListItemViewHolder) holder).ad_indicative.setVisibility(View.GONE);
+            int iconResourceId = R.drawable.ic_launcher;
+            int imageResourceId = R.drawable.ic_launcher;
+            String title = "";
+            switch (position % 5) {
+                case 1 :
+                    iconResourceId = R.drawable.tehran_icon;
+                    imageResourceId = R.drawable.tehran_image;
+                    title = titles.get(0);
+                    break;
+                case 2 :
+                    iconResourceId = R.drawable.esfehan_icon;
+                    imageResourceId = R.drawable.esfehan_image;
+                    title = titles.get(1);
+                    break;
+                case 3 :
+                    iconResourceId = R.drawable.sanandaj_icon;
+                    imageResourceId = R.drawable.sanandaj_image;
+                    title = titles.get(2);
+                    break;
+                case 4 :
+                    iconResourceId = R.drawable.tabriz_icon;
+                    imageResourceId = R.drawable.tabriz_image;
+                    title = titles.get(3);
+                    break;
+                default: break;
+            }
+            Glide.with(mContext).load(iconResourceId).into(((ListItemViewHolder) holder).advertiserIcon);
+            Glide.with(mContext).load(imageResourceId).into(((ListItemViewHolder) holder).advertiseImage);
+            ((ListItemViewHolder) holder).headlineTextView.setText(title);
         }
     }
 
@@ -125,6 +163,6 @@ public class NativeAdListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return mTitles.size();
+        return 100;
     }
 }
