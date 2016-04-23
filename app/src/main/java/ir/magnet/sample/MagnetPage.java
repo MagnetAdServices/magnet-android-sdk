@@ -40,8 +40,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
     private android.widget.Button loadVideoBtn, loadAdButton;
     private String SHOW_VIDEO_TEXT = "SHOW VIDEO";
     private Activity activityContext;
-    private String adUnitId = "AdUnitId";
-
+    private String adUnitId = "141cec5b4eec418d9c3ee4030a8f3ea1";
 
     public static MagnetPage newInstance(int position) {
         MagnetPage magnetPage = new MagnetPage();
@@ -93,7 +92,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
          * Default status of sound for video ads can be enabled or muted.
          */
         MagnetSDK.initialize(activityContext.getApplicationContext());
-        MagnetSDK.getSettings().setTestMode(true);
+        MagnetSDK.getSettings().setTestMode(false);
         MagnetSDK.getSettings().setTargetRestriction(TargetRestriction.Both);
         MagnetSDK.getSettings().setSound(true); // enable/disable sound for video ads
 
