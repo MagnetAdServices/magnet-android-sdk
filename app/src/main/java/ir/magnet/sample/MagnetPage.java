@@ -12,10 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import ir.magnet.sample.adapters.NativeAdListAdapter;
 import ir.magnet.sample.ui.FloatingActionButton;
 
@@ -40,7 +36,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
     private android.widget.Button loadVideoBtn, loadAdButton;
     private String SHOW_VIDEO_TEXT = "SHOW VIDEO";
     private Activity activityContext;
-    private String adUnitId = "141cec5b4eec418d9c3ee4030a8f3ea1";
+    private String adUnitId = "YourAdUnitId";
 
     public static MagnetPage newInstance(int position) {
         MagnetPage magnetPage = new MagnetPage();
@@ -92,7 +88,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
          * Default status of sound for video ads can be enabled or muted.
          */
         MagnetSDK.initialize(activityContext.getApplicationContext());
-        MagnetSDK.getSettings().setTestMode(false);
+        MagnetSDK.getSettings().setTestMode(true);
         MagnetSDK.getSettings().setTargetRestriction(TargetRestriction.Both);
         MagnetSDK.getSettings().setSound(true); // enable/disable sound for video ads
 
@@ -190,6 +186,7 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
 
                     @Override
                     public void onFail(int errorCode, String errorMessage) {
+                        Log.i("Magnet Log", errorMessage);
                         /**
                          * User did not see the ad completely and can not get reward.
                          */
@@ -210,12 +207,11 @@ public class MagnetPage extends Fragment implements View.OnClickListener{
                         }
 
                         @Override
-                        public void onRewardFail() {
-                            /**
-                             * User did not see the ad completely and can not get reward.
-                             */
-                            Log.i("Magnet Log", "reward successful");
+                        public void onRewardFail(int i, String s) {
+                            Log.i("Magnet Log", "reward failed");
+                            Log.i("Magnet Log", s);
                         }
+
                     });
                 } else {
                     rewardAd.load(adUnitId);
