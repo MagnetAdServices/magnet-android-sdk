@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="Narenji">#8304f9</color>
+    <color name="Sedif">#fffcfd</color>
+    <color name="custom">#0cf2cf</color>
+    <color name="Main">#0cadf2</color>
+
+</resources>
