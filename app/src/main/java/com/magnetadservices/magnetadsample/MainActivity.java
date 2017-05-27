@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Banner "));
         tabLayout.addTab(tabLayout.newTab().setText("MRect Banner"));
         tabLayout.addTab(tabLayout.newTab().setText("Native"));
+        tabLayout.addTab(tabLayout.newTab().setText("Interstitial"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

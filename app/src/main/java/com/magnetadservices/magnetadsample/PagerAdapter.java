@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.magnetadservices.magnetadsample.fragments.Tab1Fragment;
 import com.magnetadservices.magnetadsample.fragments.Tab2Fragment;
 import com.magnetadservices.magnetadsample.fragments.Tab3Fragment;
+import com.magnetadservices.magnetadsample.fragments.Tab4Fragment;
 
 /**
  * Created by Mohammad on 14/12/2016.
@@ -34,6 +35,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 Tab3Fragment tab3 = new Tab3Fragment();
                 return tab3;
+            case 3:
+                Tab4Fragment tab4 = new Tab4Fragment();
+                return tab4;
             default:
                 return null;
         }

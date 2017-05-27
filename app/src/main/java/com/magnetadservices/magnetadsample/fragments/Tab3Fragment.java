@@ -73,6 +73,6 @@ public class Tab3Fragment extends Fragment {
 
         MagnetNativeContentAd magnetNativeContentad = MagnetNativeContentAd.create(getContext());
         magnetNativeContentad.buildNativeAdView(nativeLayout, viewBinder);
-        magnetNativeContentad.load("296c0b0258f94d6bb0a492e64fb34890", frNative);
+        magnetNativeContentad.load("AdUnitId", frNative);
     }
 }
