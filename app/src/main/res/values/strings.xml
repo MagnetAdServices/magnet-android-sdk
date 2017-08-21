@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MagnetAdSample</string>
+    <string name="icon">لوگو</string>
+    <string name="title">عنوان</string>
+    <string name="description">توضیحات</string>
+    <string name="image">تصویر</string>
 </resources>

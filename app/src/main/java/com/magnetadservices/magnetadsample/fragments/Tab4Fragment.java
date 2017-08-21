@@ -13,9 +13,6 @@ import android.widget.Toast;
 import com.magnetadservices.magnetadsample.R;
 import com.magnetadservices.sdk.MagnetAdLoadListener;
 import com.magnetadservices.sdk.MagnetInterstitialAd;
-import com.magnetadservices.sdk.MagnetMobileBannerAd;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Created by Saeed on 1/11/17.
@@ -28,10 +25,8 @@ public class Tab4Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab4_fragment, container, false);
-
         btnShowInterstitial = (Button) view.findViewById(R.id.btnInterstitial);
         frBanner = (FrameLayout) view.findViewById(R.id.frBanner);
-
         return view;
     }
 
@@ -44,13 +39,11 @@ public class Tab4Fragment extends Fragment {
                 showBanner();
             }
         });
-
     }
 
     private void showBanner() {
         final MagnetInterstitialAd interstitialAd = MagnetInterstitialAd.create(getContext());
         interstitialAd.load("AdUnitId");
-
         interstitialAd.setAdLoadListener(new MagnetAdLoadListener() {
             @Override
             public void onPreload(int i, String s) {
@@ -67,6 +60,11 @@ public class Tab4Fragment extends Fragment {
             @Override
             public void onFail(int i, String s) {
                 Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onClose() {
+
             }
         });
     }

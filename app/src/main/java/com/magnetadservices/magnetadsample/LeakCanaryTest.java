@@ -28,5 +28,4 @@ public class LeakCanaryTest extends Application {
         }
         refWatcher = LeakCanary.install(this);
     }
-
 }

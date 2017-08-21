@@ -3,9 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="Narenji">#8304f9</color>
-    <color name="Sedif">#fffcfd</color>
+    <color name="purple">#8304f9</color>
+    <color name="white">#fffcfd</color>
     <color name="custom">#0cf2cf</color>
-    <color name="Main">#0cadf2</color>
-
+    <color name="main">#0cadf2</color>
+    <color name="magnetPrimary">#9e2061</color>
 </resources>

@@ -62,6 +62,11 @@ public class Tab2Fragment extends Fragment {
             public void onFail(int i, String s) {
                 Toast.makeText(getContext(), "MRect load failed", Toast.LENGTH_SHORT).show();
             }
+
+            @Override
+            public void onClose() {
+
+            }
         });
         magnetMRectAd.load("AdUnitId",frMRectBanner, MagnetMRectSize.SIZE_300_250);
     }

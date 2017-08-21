@@ -13,16 +13,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/colorPrimary"
-        android:textColor="@color/Sedif"
-        />
+        android:textColor="@color/white" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/frBanner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-    </FrameLayout>
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

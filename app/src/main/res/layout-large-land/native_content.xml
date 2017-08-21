@@ -12,7 +12,6 @@
         android:background="@color/custom"
         app:cardUseCompatPadding="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <RelativeLayout
@@ -20,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/custom"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true">
 
@@ -30,10 +28,8 @@
                 android:scaleType="fitCenter"
                 android:layout_height="200dp"
                 android:layout_below="@+id/imageview"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="14dp"
-                 />
+                android:layout_marginTop="14dp" />
 
             <ImageView
                 android:id="@+id/imageview"
@@ -41,7 +37,6 @@
                 android:layout_height="150dp"
                 android:background="@mipmap/ic_launcher"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
             <TextView
@@ -50,9 +45,8 @@
                 android:layout_height="wrap_content"
                 android:text="This text boxt contain the content."
                 android:layout_marginTop="24dp"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:layout_below="@+id/imageView2"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="true" />
 
@@ -62,16 +56,15 @@
                 app:srcCompat="@drawable/pic7"
                 android:id="@+id/ad_indicative"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
             <Button
                 android:id="@+id/button6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/Narenji"
+                android:background="@color/purple"
                 android:text="Go"
-                android:textColor="@color/Sedif"
+                android:textColor="@color/white"
                 android:layout_below="@+id/text_native"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="29dp"
@@ -80,7 +73,7 @@
             <TextView
                 android:text="TextView"
                 android:textStyle="bold"
-                android:textSize="39dp"
+                android:textSize="39sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title_native"
@@ -88,8 +81,6 @@
                 android:layout_above="@+id/imageView2"
                 android:layout_centerHorizontal="true" />
 
-
         </RelativeLayout>
     </android.support.v7.widget.CardView>
-
 </RelativeLayout>

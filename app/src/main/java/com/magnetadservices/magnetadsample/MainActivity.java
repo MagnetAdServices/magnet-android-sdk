@@ -1,16 +1,26 @@
 package com.magnetadservices.magnetadsample;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
+import com.magnetadservices.magnetadsample.adapters.PagerAdapter;
+import com.magnetadservices.magnetadsample.fragments.Tab1Fragment;
+import com.magnetadservices.magnetadsample.fragments.Tab2Fragment;
+import com.magnetadservices.magnetadsample.fragments.Tab3Fragment;
+import com.magnetadservices.magnetadsample.fragments.Tab4Fragment;
+import com.magnetadservices.magnetadsample.fragments.Tab5Fragment;
+import com.magnetadservices.magnetadsample.fragments.Tab6Fragment;
 import com.magnetadservices.sdk.MagnetSDK;
 import com.squareup.leakcanary.RefWatcher;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,33 +37,20 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Banner "));
-        tabLayout.addTab(tabLayout.newTab().setText("MRect Banner"));
-        tabLayout.addTab(tabLayout.newTab().setText("Native"));
-        tabLayout.addTab(tabLayout.newTab().setText("Interstitial"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new PagerAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
+        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new Tab1Fragment(), "Banner");
+        adapter.addFragment(new Tab2Fragment(), "MRect Banner");
+        adapter.addFragment(new Tab3Fragment(), "Native");
+        adapter.addFragment(new Tab4Fragment(), "Interstitial");
+        adapter.addFragment(new Tab5Fragment(), "Native in ListView");
+        adapter.addFragment(new Tab6Fragment(), "Native in RecyclerView");
         viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
+        tabLayout.setupWithViewPager(viewPager);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

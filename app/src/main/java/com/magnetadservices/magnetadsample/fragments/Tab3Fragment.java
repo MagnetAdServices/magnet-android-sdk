@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.magnetadservices.magnetadsample.R;
+import com.magnetadservices.sdk.MagnetAdLoadListener;
 import com.magnetadservices.sdk.MagnetNativeContentAd;
 import com.magnetadservices.sdk.MagnetNativeViewBinder;
 
@@ -29,18 +30,15 @@ public class Tab3Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab3_fragment, container, false);
-        nativeLayout = (RelativeLayout) view.inflate(getContext(), R.layout.native_content, null);
+        nativeLayout = (RelativeLayout) View.inflate(getContext(), R.layout.native_content, null);
         frNative = (FrameLayout) view.findViewById(R.id.frNative);
         btnNative = (Button) view.findViewById(R.id.btnNative);
-
-
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         btnNative.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,11 +50,12 @@ public class Tab3Fragment extends Fragment {
                 }
             }
         });
-
-
     }
 
     private void showNativeAd() {
+        if (nativeLayout.getParent() != null) {
+            ((ViewGroup) nativeLayout.getParent()).removeView(nativeLayout);
+        }
         MagnetNativeViewBinder viewBinder = null;
         try {
             viewBinder = new MagnetNativeViewBinder.Builder()
@@ -72,6 +71,28 @@ public class Tab3Fragment extends Fragment {
         }
 
         MagnetNativeContentAd magnetNativeContentad = MagnetNativeContentAd.create(getContext());
+        magnetNativeContentad.setAdLoadListener(new MagnetAdLoadListener() {
+            @Override
+            public void onPreload(int i, String s) {
+
+            }
+
+            @Override
+            public void onReceive() {
+                Toast.makeText(getContext(), "native load", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(int i, String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                temp--;
+            }
+
+            @Override
+            public void onClose() {
+
+            }
+        });
         magnetNativeContentad.buildNativeAdView(nativeLayout, viewBinder);
         magnetNativeContentad.load("AdUnitId", frNative);
     }

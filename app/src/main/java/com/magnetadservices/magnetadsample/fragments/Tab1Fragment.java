@@ -25,10 +25,8 @@ public class Tab1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab1_fragment, container, false);
-
         btnShowBanner = (Button) view.findViewById(R.id.btnShowBanner);
         frBanner = (FrameLayout) view.findViewById(R.id.frBanner);
-
         return view;
     }
 
@@ -41,12 +39,10 @@ public class Tab1Fragment extends Fragment {
                 showBanner();
             }
         });
-
     }
 
     private void showBanner() {
         MagnetMobileBannerAd bannerAd = MagnetMobileBannerAd.create(getContext());
-
         bannerAd.setAdLoadListener(new MagnetAdLoadListener() {
             @Override
             public void onPreload(int i, String s) {
@@ -62,10 +58,12 @@ public class Tab1Fragment extends Fragment {
             public void onFail(int i, String s) {
                 Toast.makeText(getContext(), "Banner load failed", Toast.LENGTH_SHORT).show();
             }
-        });
 
+            @Override
+            public void onClose() {
+
+            }
+        });
         bannerAd.load("AdUnitId", frBanner);
     }
-
-
 }
