@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import com.magnetadservices.magnetadsample.viewHolders.CountryViewHolder;
 import com.magnetadservices.magnetadsample.R;
 import com.magnetadservices.magnetadsample.models.Country;
-import com.magnetadservices.sdk.MagnetNativeContentAd;
+import com.magnetadservices.sdk.MagnetNativeAdvanced;
 import com.magnetadservices.sdk.MagnetNativeViewBinder;
 
 import java.util.List;
@@ -66,7 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             RelativeLayout contentView = (RelativeLayout) inflater.inflate(R.layout.item_native, null);
-            MagnetNativeContentAd ad = (MagnetNativeContentAd) data.get(position);
+            MagnetNativeAdvanced ad = (MagnetNativeAdvanced) data.get(position);
             ad.buildNativeAdView(contentView, viewBinder);
             ad.load("AdUnitId", ((AdViewHolder)holder).rootView);
         }
@@ -100,7 +100,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         AdViewHolder(View itemView) {
             super(itemView);
-            rootView = (FrameLayout) itemView.findViewById(R.id.frame_native);
+            rootView = itemView.findViewById(R.id.frame_native);
         }
     }
 }

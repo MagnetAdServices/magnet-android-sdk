@@ -3,7 +3,7 @@ package com.magnetadservices.magnetadsample;
 import android.content.Context;
 
 import com.magnetadservices.magnetadsample.models.Country;
-import com.magnetadservices.sdk.MagnetNativeContentAd;
+import com.magnetadservices.sdk.MagnetNativeAdvanced;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +56,7 @@ public class Utils {
     public static List<Object> injectAdObjects(Context context, List<Object> data) {
         for (int i = data.size()-1; i >= 0; i--) {
             if (i%2 == 0 && i != 0) {
-                data.add(i, MagnetNativeContentAd.create(context));
+                data.add(i, MagnetNativeAdvanced.create(context));
             }
         }
         return data;

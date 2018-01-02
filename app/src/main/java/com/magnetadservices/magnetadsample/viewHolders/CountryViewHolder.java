@@ -20,10 +20,10 @@ public class CountryViewHolder extends RecyclerView.ViewHolder {
 
     public CountryViewHolder(View itemView) {
         super(itemView);
-        titleView = (TextView) itemView.findViewById(R.id.title);
-        descriptionView = (TextView) itemView.findViewById(R.id.description);
-        iconView = (ImageView) itemView.findViewById(R.id.icon);
-        imageView = (ImageView) itemView.findViewById(R.id.image);
+        titleView = itemView.findViewById(R.id.title);
+        descriptionView = itemView.findViewById(R.id.description);
+        iconView = itemView.findViewById(R.id.icon);
+        imageView = itemView.findViewById(R.id.image);
         itemView.findViewById(R.id.call_to_action).setVisibility(View.GONE);
         itemView.findViewById(R.id.ad_indicative).setVisibility(View.GONE);
     }

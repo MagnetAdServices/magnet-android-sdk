@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import com.magnetadservices.magnetadsample.viewHolders.CountryViewHolder;
 import com.magnetadservices.magnetadsample.R;
 import com.magnetadservices.magnetadsample.models.Country;
-import com.magnetadservices.sdk.MagnetNativeContentAd;
+import com.magnetadservices.sdk.MagnetNativeAdvanced;
 import com.magnetadservices.sdk.MagnetNativeViewBinder;
 
 import java.util.List;
@@ -78,7 +78,7 @@ public class ListViewAdapter extends ArrayAdapter<Object> {
                 if (convertView == null) {
                     convertView = inflater.inflate(R.layout.item_view, parent, false);
                 }
-                MagnetNativeContentAd ad = (MagnetNativeContentAd) data.get(position);
+                MagnetNativeAdvanced ad = (MagnetNativeAdvanced) data.get(position);
                 MagnetNativeViewBinder viewBinder = null;
                 try {
                     viewBinder = new MagnetNativeViewBinder.Builder()

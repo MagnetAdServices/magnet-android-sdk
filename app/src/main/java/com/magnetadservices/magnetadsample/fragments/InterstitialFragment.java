@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.magnetadservices.magnetadsample.R;
@@ -18,31 +17,44 @@ import com.magnetadservices.sdk.MagnetInterstitialAd;
  * Created by Saeed on 1/11/17.
  */
 
-public class Tab4Fragment extends Fragment {
-    FrameLayout frBanner;
+public class InterstitialFragment extends Fragment {
+    Button btnLoadInterstitial;
     Button btnShowInterstitial;
+    MagnetInterstitialAd interstitialAd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab4_fragment, container, false);
-        btnShowInterstitial = (Button) view.findViewById(R.id.btnInterstitial);
-        frBanner = (FrameLayout) view.findViewById(R.id.frBanner);
+        btnLoadInterstitial = view.findViewById(R.id.btnInterstitial);
+        btnShowInterstitial = view.findViewById(R.id.btnShowInterstitial);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        btnLoadInterstitial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadInterstitial();
+            }
+        });
         btnShowInterstitial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBanner();
+                System.out.println(interstitialAd);
+                if (interstitialAd != null) {
+                    System.out.println(interstitialAd.isAdReady());
+                }
+                if (interstitialAd != null && interstitialAd.isAdReady()) {
+                    interstitialAd.show();
+                }
             }
         });
     }
 
-    private void showBanner() {
-        final MagnetInterstitialAd interstitialAd = MagnetInterstitialAd.create(getContext());
+    private void loadInterstitial() {
+        interstitialAd = MagnetInterstitialAd.create(getContext());
         interstitialAd.load("AdUnitId");
         interstitialAd.setAdLoadListener(new MagnetAdLoadListener() {
             @Override
@@ -52,14 +64,12 @@ public class Tab4Fragment extends Fragment {
 
             @Override
             public void onReceive() {
-                if(interstitialAd.isAdReady()){
-                    interstitialAd.show();
-                }
+                Toast.makeText(getContext(), "interstitial receive", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFail(int i, String s) {
-                Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "interstitial load failed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
