@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         MagnetSDK.initialize(getApplicationContext());
-        MagnetSDK.getSettings().setTestMode(false);
+        MagnetSDK.getSettings().setTestMode(true);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Magnet Sample Application");
