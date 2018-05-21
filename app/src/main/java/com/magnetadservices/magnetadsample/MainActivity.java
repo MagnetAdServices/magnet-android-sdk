@@ -14,6 +14,7 @@ import com.magnetadservices.magnetadsample.fragments.NativeFragment;
 import com.magnetadservices.magnetadsample.fragments.InterstitialFragment;
 import com.magnetadservices.magnetadsample.fragments.NativeListViewFragment;
 import com.magnetadservices.magnetadsample.fragments.NativeRecyclerViewFragment;
+import com.magnetadservices.magnetadsample.fragments.RewardedFragment;
 import com.magnetadservices.sdk.MagnetSDK;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new NativeFragment(), "Native");
         adapter.addFragment(new NativeExpressFragment(), "Native Express");
         adapter.addFragment(new InterstitialFragment(), "Interstitial");
+        adapter.addFragment(new RewardedFragment(), "Rewarded");
         adapter.addFragment(new NativeListViewFragment(), "Native in ListView");
         adapter.addFragment(new NativeRecyclerViewFragment(), "Native in RecyclerView");
         viewPager.setAdapter(adapter);

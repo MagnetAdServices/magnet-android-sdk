@@ -27,7 +27,6 @@ public class NativeExpressFragment extends Fragment {
     FrameLayout frNative;
     Button btnNative;
     RelativeLayout nativeLayout;
-    private int width;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,12 +46,6 @@ public class NativeExpressFragment extends Fragment {
                 showNativeAd();
             }
         });
-
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        ((Activity) getContext()).getWindowManager()
-                .getDefaultDisplay()
-                .getMetrics(displayMetrics);
-        width = displayMetrics.widthPixels;
     }
 
     private void showNativeAd() {
@@ -82,6 +75,6 @@ public class NativeExpressFragment extends Fragment {
 
             }
         });
-        magnetNativeExpress.load("AdUnitId", frNative, new AdSize(width, 180));
+        magnetNativeExpress.load("AdUnitId", frNative, new AdSize(300, 300));
     }
 }
