@@ -3,9 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="purple">#8304f9</color>
+    <color name="purple">#6A1B9A</color>
     <color name="white">#fffcfd</color>
     <color name="custom">#0cf2cf</color>
     <color name="main">#0cadf2</color>
     <color name="magnetPrimary">#9e2061</color>
+    <color name="background">#EEEEEE</color>
 </resources>

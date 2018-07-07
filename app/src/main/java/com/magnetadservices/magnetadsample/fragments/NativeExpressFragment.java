@@ -1,10 +1,8 @@
 package com.magnetadservices.magnetadsample.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +25,7 @@ public class NativeExpressFragment extends Fragment {
     FrameLayout frNative;
     Button btnNative;
     RelativeLayout nativeLayout;
+    private int width;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,6 +33,8 @@ public class NativeExpressFragment extends Fragment {
         nativeLayout = (RelativeLayout) View.inflate(getContext(), R.layout.native_content, null);
         frNative = view.findViewById(R.id.frNative);
         btnNative = view.findViewById(R.id.btnNative);
+
+        width = (int) (getResources().getDisplayMetrics().widthPixels / getResources().getDisplayMetrics().density);
         return view;
     }
 
@@ -75,6 +76,7 @@ public class NativeExpressFragment extends Fragment {
 
             }
         });
-        magnetNativeExpress.load("AdUnitId", frNative, new AdSize(300, 300));
+        // TODO: replace the adUnitId with yours
+        magnetNativeExpress.load("2f84c1f29e0408d5b305f98aad0e008e", frNative, new AdSize(width, width));
     }
 }

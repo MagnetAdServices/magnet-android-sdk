@@ -27,20 +27,20 @@ public class MainActivity extends AppCompatActivity {
         MagnetSDK.initialize(getApplicationContext());
         MagnetSDK.getSettings().setTestMode(true);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Magnet Sample Application");
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        ViewPager viewPager = findViewById(R.id.pager);
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new MobileBannerFragment(), "Banner");
-        adapter.addFragment(new MRectFragment(), "MRect Banner");
-        adapter.addFragment(new NativeFragment(), "Native");
         adapter.addFragment(new NativeExpressFragment(), "Native Express");
         adapter.addFragment(new InterstitialFragment(), "Interstitial");
         adapter.addFragment(new RewardedFragment(), "Rewarded");
+        adapter.addFragment(new MRectFragment(), "MRect Banner");
+        adapter.addFragment(new NativeFragment(), "Native");
         adapter.addFragment(new NativeListViewFragment(), "Native in ListView");
         adapter.addFragment(new NativeRecyclerViewFragment(), "Native in RecyclerView");
         viewPager.setAdapter(adapter);

@@ -7,20 +7,20 @@
         android:id="@+id/native_outer_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/background"
         app:cardElevation="4dp"
         app:cardPreventCornerOverlap="false"
-        android:background="@color/custom"
-        app:cardUseCompatPadding="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        app:cardUseCompatPadding="true">
 
         <RelativeLayout
             android:id="@+id/native_layout"
             android:layout_width="match_parent"
             android:layout_height="363dp"
-            android:background="@color/custom"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
+            android:layout_alignParentTop="true"
+            android:background="@color/background">
 
             <Button
                 android:id="@+id/button6"
@@ -30,53 +30,58 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="true"
                 android:background="@color/purple"
-                android:text="Go"
+                android:text="click"
                 android:textColor="@color/white" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
-                android:scaleType="fitCenter"
                 android:layout_height="180dp"
-                android:layout_below="@+id/imageview"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="14dp" />
+                android:layout_below="@+id/imageview"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitCenter" />
 
             <ImageView
                 android:id="@+id/imageview"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@mipmap/ic_launcher"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:layout_margin="8dp"
+                android:background="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/text_native"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="This text boxt contain the content."
-                android:layout_marginTop="24dp"
-                android:layout_below="@+id/imageView2"
                 android:layout_above="@id/button6"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/imageView2"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="This text boxt contain the content." />
 
             <ImageView
+                android:id="@+id/ad_indicative"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/pic7"
-                android:id="@+id/ad_indicative"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                app:srcCompat="@drawable/pic7" />
 
             <TextView
-                android:text="TextView"
-                android:textStyle="bold"
-                android:textSize="15sp"
+                android:id="@+id/title_native"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/title_native"
-                android:layout_alignBottom="@+id/ad_indicative"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/imageview"
+                android:layout_toStartOf="@id/ad_indicative"
+                android:gravity="center"
+                android:text="TextView"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
