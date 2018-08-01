@@ -51,13 +51,8 @@ public class RewardedFragment extends Fragment {
                 if (rewardAd != null && rewardAd.isAdReady()) {
                     rewardAd.show(new MagnetRewardListener() {
                         @Override
-                        public void onRewardSuccessful(String s, String s1) {
-                            Toast.makeText(getContext(), "reward successful", Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onRewardFail(int i, String s) {
-                            Toast.makeText(getContext(), "reward fail", Toast.LENGTH_SHORT).show();
+                        public void onFinish(boolean isRewardSuccessful) {
+                            Toast.makeText(getContext(), "reward successful: " + isRewardSuccessful, Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
