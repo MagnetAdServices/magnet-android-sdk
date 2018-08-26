@@ -55,7 +55,6 @@ public class InterstitialFragment extends Fragment {
 
     private void loadInterstitial() {
         interstitialAd = MagnetInterstitialAd.create(getContext());
-        interstitialAd.load("AdUnitId");
         interstitialAd.setAdLoadListener(new MagnetAdLoadListener() {
             @Override
             public void onPreload(int i, String s) {
@@ -77,5 +76,6 @@ public class InterstitialFragment extends Fragment {
 
             }
         });
+        interstitialAd.load("AdUnitId");
     }
 }

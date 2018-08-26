@@ -4,4 +4,5 @@
     <string name="title">عنوان</string>
     <string name="description">توضیحات</string>
     <string name="image">تصویر</string>
+    <string name="logo">logo</string>
 </resources>

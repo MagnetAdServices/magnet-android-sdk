@@ -27,10 +27,6 @@ public class MainActivity extends AppCompatActivity {
         MagnetSDK.initialize(getApplicationContext());
         MagnetSDK.getSettings().setTestMode(true);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Magnet Sample Application");
-        setSupportActionBar(toolbar);
-
         TabLayout tabLayout = findViewById(R.id.tab_layout);
 
         ViewPager viewPager = findViewById(R.id.pager);

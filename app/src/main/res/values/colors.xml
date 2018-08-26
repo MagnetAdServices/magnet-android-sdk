@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#8b084c</color>
+    <color name="colorPrimaryDark">#404162</color>
+    <color name="colorAccent">#7cc3ce</color>
     <color name="purple">#6A1B9A</color>
     <color name="white">#fffcfd</color>
     <color name="custom">#0cf2cf</color>
     <color name="main">#0cadf2</color>
     <color name="magnetPrimary">#9e2061</color>
     <color name="background">#EEEEEE</color>
+    <color name="main_background">#e8e8ea</color>
+    <color name="tabTextColor">#808080</color>
 </resources>

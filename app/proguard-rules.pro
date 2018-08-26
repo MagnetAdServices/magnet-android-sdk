@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class com.magnetadservices.sdk.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
